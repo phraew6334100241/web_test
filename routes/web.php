@@ -17,9 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('welcome', function () {
-    return view('test');
-});
 Route::get('index', function () {
     return view('index');
 })->middleware('auth');
@@ -29,7 +26,7 @@ Route::get('form', function () {
 });
 
 Route::get('form', function () {
-    return view('home');
+    return view('profile_list');
 });
 
 Auth::routes();
@@ -38,5 +35,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/page', [App\Http\Controllers\HomeController::class, 'page']);
 
-Route::post('postcustomers', [App\Http\Controllers\HomeController::class,'savecustomers']);
+Route::post('postprofile', [App\Http\Controllers\ProfileController::class, 'saveprofile']);
+
+Route::get('profile_list',[App\Http\Controllers\ProfileController::class,'getProfile']);
+
+Route::post('delprofile',[App\Http\Controllers\ProfileController::class,'delprofile']);
+
+Route::get('edit_{id}',[App\Http\Controllers\ProfileController::class,'editprofile']);
+
+Route::post('updateprofile',[App\Http\Controllers\ProfileController::class,'updateprofile']);
 

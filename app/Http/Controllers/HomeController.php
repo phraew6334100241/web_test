@@ -32,18 +32,7 @@ class HomeController extends Controller
         return view('page');
     }
 
-    public function savecustomers(Request $req){
-        $profile = new profile;
-        $profile->fist_name = $req->fist_name;
-        $profile->last_name = $req->last_name;
-        $profile->email = $req->email;
-        $profile->phone = $req->phone;
-        $profile->save();
-
-        return view('postcustomers');
-    }
-
 }
-    
+
 
     
